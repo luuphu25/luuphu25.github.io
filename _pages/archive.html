@@ -1,0 +1,19 @@
+---
+layout: archive
+permalink: /archive/
+author_profile: true
+---
+
+{% for post in site.posts %}
+    {% assign currentDate = post.date | date: "%Y" %}
+    {% if currentDate != myDate %}
+        {% unless forloop.first %}</ul>{% endunless %}
+        <h1>{{ currentDate }}</h1>
+        <ul>
+        {% assign myDate = currentDate %}
+    {% endif %}
+    {% include archive-single.html %}
+    {% if forloop.last %}</ul>{% endif %}
+{% endfor %}
+ 
+  
